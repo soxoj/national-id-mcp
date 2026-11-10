@@ -3,7 +3,7 @@
 An MCP server that lets an AI agent validate and decode ID numbers: national IDs, tax IDs, company and VAT numbers,
 passport numbers and passport MRZ.
 
-- **222 ID types from 108 countries and territories.**
+- **261 ID types from 127 countries and territories.**
 - For every value it returns each ID type the value fits, whether the checksum is right, the number in its usual
   printed layout, and what the number itself encodes: date of birth, sex, region or place of birth, citizenship,
   taxpayer type.

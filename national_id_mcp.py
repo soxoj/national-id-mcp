@@ -17,7 +17,7 @@ APIFY_URL = 'https://api.apify.com/v2/acts/soxoj~national-id-tax-id-validator/ru
 BATCH = 100  # values per RapidAPI request
 
 server = MCPServer('national-id', instructions=(
-    'Validates national ID numbers, tax IDs, company registration numbers, VAT numbers and passport MRZ of 108 '
+    'Validates national ID numbers, tax IDs, company registration numbers, VAT numbers and passport MRZ of 127 '
     'countries and territories offline, and decodes what the number itself encodes: date of birth, sex, region or '
     'place of birth, citizenship. It does not query any government registry: valid means correctly built, not that '
     'the document exists or belongs to a particular person.'))
