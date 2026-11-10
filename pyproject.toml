@@ -1,7 +1,7 @@
 [project]
 name = "national-id-mcp"
 version = "0.1.0"
-description = "National ID & Tax ID Validator MCP: validate and decode national IDs, tax IDs and passport MRZ of 108 countries via RapidAPI or Apify"
+description = "National ID & Tax ID Validator MCP: validate and decode national IDs, tax IDs and passport MRZ of 127 countries and territories via RapidAPI or Apify"
 readme = "README.md"
 license = "MIT"
 requires-python = ">=3.10"
