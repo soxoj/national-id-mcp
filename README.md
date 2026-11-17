@@ -1,9 +1,9 @@
 # National ID & Tax ID Validator MCP
 
 An MCP server that lets an AI agent validate and decode ID numbers: national IDs, tax IDs, company and VAT numbers,
-passport numbers and passport MRZ.
+passport and driver licence numbers, and the MRZ of passports, ID cards and visas.
 
-- **261 ID types from 127 countries and territories.**
+- **279 ID types from 130 countries and territories.**
 - For every value it returns each ID type the value fits, whether the checksum is right, the number in its usual
   printed layout, and what the number itself encodes: date of birth, sex, region or place of birth, citizenship,
   taxpayer type.
@@ -125,17 +125,19 @@ the tool comes from Apify's generic Actor wrapper rather than from this server.
 - `values`: a list of ID numbers, MRZ strings or tax numbers. Spaces and hyphens are fine.
 - `country`: optional ISO 3166 alpha-3 code, e.g. `POL`. Only this country's types are tried, and `valid` becomes
   `true` or `false`. Without it `valid` is `null`, since one string can be a valid number in several countries.
-- `type`: optional exact type, e.g. `pol_pesel`, taken from an earlier result.
+- `type`: optional exact type, e.g. `pol_pesel`, taken from an earlier result. `mrz` tries every MRZ layout, and
+  `usa_driver_license` the driver licences of every US state the API reads.
 
 Through RapidAPI the result is one object per value: `{"value", "valid", "matches": [{"type", "checksum_verified",
-"formatted", "fields"}]}`, checksum-verified matches first. Through Apify it is one row per matched type, with the
-same fields.
+"formatted", "fields"}], "reason"}`, checksum-verified matches first. `reason` comes only when something nearly
+matched: an MRZ with a wrong check digit, or, with a hint, a number that is off by its check digit. Through Apify it
+is one row per matched type, with the same fields.
 
 ## What it does not do
 
 - No registry lookups: it cannot tell whether a person exists, a passport is still valid or a tax number is active.
 - About a third of the types have no public checksum; for those only the format is checked.
-- MRZ: passports (TD3) only, not ID cards (TD1, TD2).
+- US driver licences: 10 states so far, format only (no state publishes a check digit).
 - No OCR: the input is text.
 
 ## Development
